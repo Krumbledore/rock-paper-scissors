@@ -10,7 +10,7 @@ function getComputerChoice(){
 
 function playRound(playerSelection, computerSelection){
     score = 0;
-    for(i = 0; i < 5; i++){
+    for(i = 0; i === i; i++){
         playerSelection = prompt("Enter Rock, Paper, or Scissors").toLowerCase();
         computerSelection = getComputerChoice();
         if(playerSelection === computerSelection){
@@ -58,18 +58,6 @@ function playRound(playerSelection, computerSelection){
         }else if(!(playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors' )){
             console.log("ERROR: Please enter 'Rock' 'Paper' or 'Scissors' ")
             i = i - 1;
-        }
-            
-        
-        
-      
-
-    }
-    if(i === 5){
-        if(playerScore > computerScore){
-            console.log("WINNER! You beat the Computer by " + (playerScore - computerScore) + " points!")
-        }else{
-            console.log("LOSER! You lost by " + (computerScore - playerScore) + " points!")
         }
     }
 }
