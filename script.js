@@ -10,58 +10,79 @@ function getComputerChoice(){
 
 function playRound(playerSelection, computerSelection){
     score = 0;
-    for(i = 0; i === i; i++){
-        playerSelection = prompt("Enter Rock, Paper, or Scissors").toLowerCase();
-        computerSelection = getComputerChoice();
-        if(playerSelection === computerSelection){
-            
-            console.log("ROCK, PAPER, SCISSORS!\n DRAW: " + playerSelection + " vs " + computerSelection);
-            i = i - 1;
-            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
-            //User plays Rock    
-        }else if( playerSelection === "rock" && computerSelection === "paper"){
-            console.log("ROCK, PAPER, SCISSORS!\n YOU LOSE!: " + playerSelection + " vs " + computerSelection);
-            computerScore = computerScore + 1;
-            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
-        
-        }else if( playerSelection === "rock" && computerSelection === "scissors"){
-            console.log("ROCK, PAPER, SCISSORS!\n YOU WIN!: " + playerSelection + " vs " + computerSelection);
-            playerScore = playerScore + 1;
-            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
-        
     
-            //User plays Paper
-        }else if( playerSelection === "paper" && computerSelection === "scissors"){
-            console.log("ROCK, PAPER, SCISSORS!\n YOU LOSE!: " + playerSelection + " vs " + computerSelection);
-            computerScore = computerScore + 1;
-            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+    
+    computerSelection = getComputerChoice();
+    if(playerSelection === computerSelection){
         
-        }else if( playerSelection === "paper" && computerSelection === "rock"){
-            console.log("ROCK, PAPER, SCISSORS!\n YOU WIN!: " + playerSelection + " vs " + computerSelection);
-            playerScore = playerScore + 1;
-            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+        console.log("ROCK, PAPER, SCISSORS!\n DRAW: " + playerSelection + " vs " + computerSelection);
+
+        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+        //User plays Rock    
+    }else if( playerSelection === "rock" && computerSelection === "paper"){
+        console.log("ROCK, PAPER, SCISSORS!\n YOU LOSE!: " + playerSelection + " vs " + computerSelection);
+        computerScore = computerScore + 1;
+        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+    
+    }else if( playerSelection === "rock" && computerSelection === "scissors"){
+        console.log("ROCK, PAPER, SCISSORS!\n YOU WIN!: " + playerSelection + " vs " + computerSelection);
+        playerScore = playerScore + 1;
+        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+    
+
+        //User plays Paper
+    }else if( playerSelection === "paper" && computerSelection === "scissors"){
+        console.log("ROCK, PAPER, SCISSORS!\n YOU LOSE!: " + playerSelection + " vs " + computerSelection);
+        computerScore = computerScore + 1;
+        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+    
+    }else if( playerSelection === "paper" && computerSelection === "rock"){
+        console.log("ROCK, PAPER, SCISSORS!\n YOU WIN!: " + playerSelection + " vs " + computerSelection);
+        playerScore = playerScore + 1;
+        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+    
+    
+        //User plays Scissors
+    }else if( playerSelection === "scissors" && computerSelection === "rock"){
+        console.log("ROCK, PAPER, SCISSORS!\n YOU LOSE!: " + playerSelection + " vs " + computerSelection);
+        computerScore = computerScore + 1;
+        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+    
+    }else if( playerSelection === "scissors" && computerSelection === "paper"){
+        console.log("ROCK, PAPER, SCISSORS!\n YOU WIN!: " + playerSelection + " vs " + computerSelection);
+        playerScore = playerScore + 1;
+        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+    
+    
         
-        
-            //User plays Scissors
-        }else if( playerSelection === "scissors" && computerSelection === "rock"){
-            console.log("ROCK, PAPER, SCISSORS!\n YOU LOSE!: " + playerSelection + " vs " + computerSelection);
-            computerScore = computerScore + 1;
-            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
-        
-        }else if( playerSelection === "scissors" && computerSelection === "paper"){
-            console.log("ROCK, PAPER, SCISSORS!\n YOU WIN!: " + playerSelection + " vs " + computerSelection);
-            playerScore = playerScore + 1;
-            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
-        
-        
-            
-        }else if(!(playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors' )){
-            console.log("ERROR: Please enter 'Rock' 'Paper' or 'Scissors' ")
-            i = i - 1;
-        }
+    }else if(!(playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors' )){
+        console.log("ERROR: Please enter 'Rock' 'Paper' or 'Scissors' ")
     }
+    
 }
 
-const playerSelection = "rock";
+let menu = document.querySelector('.container')
+
+menu.addEventListener('click', (e) =>{
+    let target = e.target;
+
+    switch(target.id){
+        case 'rock':
+            playerSelection = 'rock';
+            playRound(playerSelection, computerSelection);
+            break;
+        case 'paper':
+            playerSelection = 'paper';
+            playRound(playerSelection, computerSelection);
+            break;
+        case 'scissors':
+            playerSelection = 'scissors';
+            playRound(playerSelection, computerSelection);
+            break;
+    }
+})
+
+
+
+let playerSelection = '';
 const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
