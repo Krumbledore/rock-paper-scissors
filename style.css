@@ -1,0 +1,34 @@
+*{
+    border: solid 2px red;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex: 1 1 0;
+}
+.container{
+    display: flex;
+    gap: 25px;
+    padding:50px;
+    flex:0 1 1;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.container button{
+    flex:0 1 1;
+    min-width: 150px;
+    gap: 25px;
+    padding: 25px;
+    border-radius: 10px;
+    background-color:  #71a886;
+    color: aliceblue;
+    font-size: larger;
+    font-weight: 700;
+}
