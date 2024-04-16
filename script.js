@@ -11,58 +11,59 @@ function getComputerChoice(){
 function playRound(playerSelection, computerSelection){
     score = 0;
     
-    
-    computerSelection = getComputerChoice();
-    if(playerSelection === computerSelection){
-        
-        console.log("ROCK, PAPER, SCISSORS!\n DRAW: " + playerSelection + " vs " + computerSelection);
+    if(playerScore !== 5 && computerScore !== 5){
+        computerSelection = getComputerChoice();
+        if(playerSelection === computerSelection){
+            
+            console.log("ROCK, PAPER, SCISSORS!\n DRAW: " + playerSelection + " vs " + computerSelection);
 
-        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
-        draw(playerSelection, computerSelection);
-        //User plays Rock    
-    }else if( playerSelection === "rock" && computerSelection === "paper"){
-        console.log("ROCK, PAPER, SCISSORS!\n YOU LOSE!: " + playerSelection + " vs " + computerSelection);
-        computerScore = computerScore + 1;
-        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
-        lose(playerSelection, computerSelection);
-    }else if( playerSelection === "rock" && computerSelection === "scissors"){
-        console.log("ROCK, PAPER, SCISSORS!\n YOU WIN!: " + playerSelection + " vs " + computerSelection);
-        playerScore = playerScore + 1;
-        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
-        win(playerSelection, computerSelection);
-    
-
-        //User plays Paper
-    }else if( playerSelection === "paper" && computerSelection === "scissors"){
-        console.log("ROCK, PAPER, SCISSORS!\n YOU LOSE!: " + playerSelection + " vs " + computerSelection);
-        computerScore = computerScore + 1;
-        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
-        lose(playerSelection, computerSelection);
-   
-    }else if( playerSelection === "paper" && computerSelection === "rock"){
-        console.log("ROCK, PAPER, SCISSORS!\n YOU WIN!: " + playerSelection + " vs " + computerSelection);
-        playerScore = playerScore + 1;
-        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
-        win(playerSelection, computerSelection);
-    
-        //User plays Scissors
-    }else if( playerSelection === "scissors" && computerSelection === "rock"){
-        console.log("ROCK, PAPER, SCISSORS!\n YOU LOSE!: " + playerSelection + " vs " + computerSelection);
-        computerScore = computerScore + 1;
-        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
-        lose(playerSelection, computerSelection)
-    
-    }else if( playerSelection === "scissors" && computerSelection === "paper"){
-        console.log("ROCK, PAPER, SCISSORS!\n YOU WIN!: " + playerSelection + " vs " + computerSelection);
-        playerScore = playerScore + 1;
-        console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
-        win(playerSelection, computerSelection);
-    
+            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+            draw(playerSelection, computerSelection);
+            //User plays Rock    
+        }else if( playerSelection === "rock" && computerSelection === "paper"){
+            console.log("ROCK, PAPER, SCISSORS!\n YOU LOSE!: " + playerSelection + " vs " + computerSelection);
+            computerScore = computerScore + 1;
+            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+            lose(playerSelection, computerSelection);
+        }else if( playerSelection === "rock" && computerSelection === "scissors"){
+            console.log("ROCK, PAPER, SCISSORS!\n YOU WIN!: " + playerSelection + " vs " + computerSelection);
+            playerScore = playerScore + 1;
+            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+            win(playerSelection, computerSelection);
         
-    }else if(!(playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors' )){
-        console.log("ERROR: Please enter 'Rock' 'Paper' or 'Scissors' ")
-    }
+
+            //User plays Paper
+        }else if( playerSelection === "paper" && computerSelection === "scissors"){
+            console.log("ROCK, PAPER, SCISSORS!\n YOU LOSE!: " + playerSelection + " vs " + computerSelection);
+            computerScore = computerScore + 1;
+            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+            lose(playerSelection, computerSelection);
     
+        }else if( playerSelection === "paper" && computerSelection === "rock"){
+            console.log("ROCK, PAPER, SCISSORS!\n YOU WIN!: " + playerSelection + " vs " + computerSelection);
+            playerScore = playerScore + 1;
+            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+            win(playerSelection, computerSelection);
+        
+            //User plays Scissors
+        }else if( playerSelection === "scissors" && computerSelection === "rock"){
+            console.log("ROCK, PAPER, SCISSORS!\n YOU LOSE!: " + playerSelection + " vs " + computerSelection);
+            computerScore = computerScore + 1;
+            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+            lose(playerSelection, computerSelection)
+        
+        }else if( playerSelection === "scissors" && computerSelection === "paper"){
+            console.log("ROCK, PAPER, SCISSORS!\n YOU WIN!: " + playerSelection + " vs " + computerSelection);
+            playerScore = playerScore + 1;
+            console.log("Your score: " + playerScore + " | Computer score: " + computerScore);
+            win(playerSelection, computerSelection);
+        
+            
+        }else if(!(playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors' )){
+            console.log("ERROR: Please enter 'Rock' 'Paper' or 'Scissors' ")
+        }
+    }else gameOver(playerScore, computerScore);
+        
 }
 
 let menu = document.querySelector('.container')
@@ -85,15 +86,20 @@ menu.addEventListener('click', (e) =>{
             break;
     }
 })
-let resultText = document.createElement('p')
-let info = document.querySelector('.game-info');
+
 
 function win(playerSelection, computerSelection){
     let p = document.createElement('p')
     resultText.textContent = "YOU WIN!: " + playerSelection + " vs " + computerSelection;
     resultText.style.color = 'green';
     
+   
     info.appendChild(resultText)
+    
+    scoreText.textContent = "YOU: " + playerScore + " | " + "Computer: " + computerScore;
+    scoreText.style.fontSize = "18px"
+    scoreText.style.color = "white"
+    info.appendChild(scoreText)
 }
 
 function lose(playerSelection, computerSelection){
@@ -102,6 +108,11 @@ function lose(playerSelection, computerSelection){
     resultText.style.color = 'red';
     
     info.appendChild(resultText)
+
+    scoreText.textContent = "YOU: " + playerScore + " | " + "Computer: " + computerScore;
+    scoreText.style.fontSize = "18px"
+    scoreText.style.color = "white"
+    info.appendChild(scoreText)
 }
 
 function draw(playerSelection, computerSelection){
@@ -110,7 +121,26 @@ function draw(playerSelection, computerSelection){
     resultText.style.color = 'yellow';
     
     info.appendChild(resultText)
+
+    scoreText.textContent = "YOU: " + playerScore + " | " + "Computer: " + computerScore;
+    scoreText.style.fontSize = "18px"
+    scoreText.style.color = "white"
+    info.appendChild(scoreText)
+}
+
+function gameOver(playerScore, computerScore){
+    if(playerScore > computerScore){
+        gameOverText.textContent = "WINNER! You won by " + (playerScore - computerScore) + " points!";
+        info.appendChild(gameOverText)
+    }else{
+        gameOverText.textContent = "LOSER! You lost by " + (computerScore - playerScore) + " points!";
+        info.appendChild(gameOverText)
+    }
 }
 
 let playerSelection = '';
 const computerSelection = getComputerChoice();
+let resultText = document.createElement('p')
+let scoreText = document.createElement('p')
+let info = document.querySelector('.game-info');
+let gameOverText = document.createElement('p')

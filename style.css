@@ -1,6 +1,4 @@
-*{
-    border: solid 2px red;
-}
+
 
 body{
     display: flex;
@@ -10,17 +8,24 @@ body{
     min-height: 100vh;
     flex: 1 1 0;
     background-color: #1b1a27;
+    margin: 0;
 }
 
 .container{
   display: flex;
   flex-direction: column;
+  flex:1 1 1;
+
 }
 
 .game-info p{
     text-align: center;
     font-weight: 800;
     font-size: 24px;
+    margin: 0;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #1b1a27;
+    font-family:sans-serif;
     
 }
 
@@ -32,6 +37,8 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
     
 }
 
@@ -45,4 +52,12 @@ body{
     color: aliceblue;
     font-size: larger;
     font-weight: 700;
+    
+    
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #1b1a27;
+}
+
+button:hover{
+    background-color: #24643d;
 }
